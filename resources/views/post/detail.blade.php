@@ -1,20 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>保険の悩み一覧</h1>
-@if (session('flash_message'))
-<div class="flash_message" style="color:red">{{ session('flash_message') }}</div>
-@endif
+<h1>保険の悩み詳細</h1>
 
-
-<form action="#" method="post">
-{{csrf_field()}}
-<input type="text" >
-<input type="submit" value="検索する">
-</form>
-
-@if (!empty($posts))
-@foreach ($posts as $post)
+@if (!empty($post))
 <table border="1" style="text-align:center; border-collapse:collapse;">
 <a href="{{route('profile.detail', ['user_id' => $post->user_id])}}">
 <img style="height:100px; width:100px; border-radius:50%" src="{{asset('/storage/' . $post->image)}}">
@@ -79,22 +68,38 @@
 </td>
 </tr>
 @if (Auth::id() === $post->user_id)
-<a href="{{route('post.delete', ['post_id' => $post->post_id])}}">投稿を削除する<i class="fa fa-trash"></i></a>
+<a href="{{route('post.delete', ['post_id' => $post->post_id])}}"><i class="fa fa-trash"></i></a>
 @endif
-<a href="{{route('post.commentForm', ['post_id' => $post->post_id])}}">コメント(提案含む)を追加する<i class="far fa-comment"></i></a>
-<a href="{{route('post.detail', ['post_id' => $post->post_id])}}">コメントを確認する</a>
+<a href="{{route('post.commentForm', ['post_id' => $post->post_id])}}"><i class="far fa-comment"></i></a>
 </table>
 
-@endforeach
 
 @else 
 <p>投稿はありません</p>
 @endif
 
-@guest
-<p>ログインしたら投稿できるようになります。</p>
-@else
-<a href="{{route('post.showPostForm')}}">悩みを投稿する</a>
-@endguest
+@if (!empty($comments))
+<h2>コメント一覧</h2>
+@foreach ($comments as $comment)
+<div style="display:flex; background:#b0c4de; width:900px; margin:0 auto;">
+<a href="{{route('profile.detail', ['user_id' => $comment->user_id])}}">
+<img style="height:100px; width:100px; border-radius:50%" src="{{asset('/storage/' . $post->image)}}">
+<p>{{$comment->name}}</p>
+</a>
+<div>
+<p>{{$comment->created_at}}</p>
+</br>
+<p>{{$comment->comment}}</p>
+@if (Auth::id === $comment->user_id)
+<a href="{{route('post.commentDelete', ['comment_id' => $comment->id])}}">
+<i class="fa fa-trash"></i>
+</a>
+@endif
+</div>
+</div>
+
+@endforeach
+@endif
+
 
 @endsection

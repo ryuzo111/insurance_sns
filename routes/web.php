@@ -32,4 +32,9 @@ Route::group(['prefix' => 'profile'], function() {
 Route::group(['prefix' => 'post', 'middleware' => 'auth'], function() {
 				Route::get('postForm', 'PostController@showPostForm')->name('post.showPostForm');
 				Route::post('post', 'PostController@post')->name('post.post');
+				Route::get('delete', 'PostController@delete')->name('post.delete');
+				Route::post('post_comment', 'PostController@postComment')->name('post.postComment');
+				Route::get('post_form', 'PostController@commentForm')->name('post.commentForm');
+				Route::get('detail', 'PostController@detail')->name('post.detail');
+				Route::get('comment_delete', 'PostController@commentDelete')->name('post.commentDelete');
 });
