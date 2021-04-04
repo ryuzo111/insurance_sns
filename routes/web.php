@@ -37,4 +37,15 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth'], function() {
 				Route::get('post_form', 'PostController@commentForm')->name('post.commentForm');
 				Route::get('detail', 'PostController@detail')->name('post.detail');
 				Route::get('comment_delete', 'PostController@commentDelete')->name('post.commentDelete');
+				Route::get('comment_good', 'PostController@commentGood')->name('post.commentGood');
+});
+
+Route::group(['prefix' => 'rank'], function() {
+				Route::get('rank', 'RankController@rank')->name('rank.rank');
+});
+
+Route::group(['prefix' => 'caht', 'middleware' => 'auth'], function() {
+				Route::get('index', 'ChatController@index')->name('chat.index');
+				Route::get('chat', 'ChatController@chat')->name('chat.chat');
+				Route::post('chatSend', 'ChatController@chatSend')->name('chat.send');
 });

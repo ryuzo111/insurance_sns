@@ -20,7 +20,13 @@ class ProfileController extends Controller
 				public function	profile() {
 
 								$profile = Profile::where('user_id', Auth::id())->first();
+								if (!empty($profile)) {
+												$first = first;
+								return view('top.profile', compact('first'));
+								} else {
 								return view('top.profile', compact('profile'));
+								}
+
 				}
 				public function edit(Request $request) {
 

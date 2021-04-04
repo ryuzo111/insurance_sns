@@ -2,6 +2,9 @@
 
 @section('content')
 <h1>保険の悩み詳細</h1>
+@if (session('flash_message'))
+<div class="flash_message" style="color:red">{{ session('flash_message') }}</div>
+@endif
 
 @if (!empty($post))
 <table border="1" style="text-align:center; border-collapse:collapse;">
@@ -90,11 +93,20 @@
 <p>{{$comment->created_at}}</p>
 </br>
 <p>{{$comment->comment}}</p>
-@if (Auth::id === $comment->user_id)
+@if (Auth::id() === $comment->user_id)
 <a href="{{route('post.commentDelete', ['comment_id' => $comment->id])}}">
 <i class="fa fa-trash"></i>
 </a>
+@if ($post->user_id === Auth::id() && $comment->good === 0)
+<a href="{{route('post.commentGood', ['comment_id' => $comment->id])}}">
+<i class="far fa-thumbs-up"></i>参考になった
+</a>
+@elseif ($comment->good === 1)
+<p>参考になったコメント</p>
 @endif
+@endif
+
+
 </div>
 </div>
 

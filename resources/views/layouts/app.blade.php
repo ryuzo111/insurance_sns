@@ -68,6 +68,8 @@
                                 </ul>
                             </li>
 																		<li><a href="{{route('profile.profile')}}">プロフィール</a></li>
+																		<li><a href="{{route('rank.rank')}}">コメントいいねランキング</a></li>
+																		<li><a href="{{route('chat.index')}}">チャット</a></li>
                         @endguest
                     </ul>
                 </div>

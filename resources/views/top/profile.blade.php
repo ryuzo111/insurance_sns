@@ -2,7 +2,9 @@
 
 @section('content')
 <h1>プローフィールページ</h1>
+@if (!empty($profile['image']))
 <img style="height:100px; width:100px; border-radius:50%" src="{{asset('/storage/' . $profile->image)}}">
+@endif
 
 <p>{{$profile['name'] ?? null}}</p>
 
@@ -59,7 +61,18 @@
 <p>未登録</p>
 @endif
 
+@if (!empty($profile['user_id']))
+<a href="{{route('chat.chat', ['user_id' => $profile['user_id']])}}">
+チャットする
+</a>
+@endif
+
+@if (!empty($profile['user_id']))
 @if ($profile['user_id'] === Auth::id())
 <a href="{{route('profile.showEditForm')}}">プロフィールを編集する</a>
+@endif
+@else
+<a href="{{route('profile.showEditForm')}}">プロフィールを編集する</a>
+
 @endif
 @endsection

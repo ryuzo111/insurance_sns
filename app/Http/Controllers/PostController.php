@@ -14,7 +14,7 @@ class PostController extends Controller
 				public function index() {
 								//$posts = Post::all();
 								$profile = Profile::where('user_id', Auth::id())->first();
-								$posts = DB::table('posts')->select('posts.id as post_id', 'posts.created_at', 'posts.title', 'posts.trouble', 'posts.life', 'posts.midical', 'posts.saving', 'posts.cancer', 'posts.pension', 'posts.all_life', 'posts.insurance_value', 'posts.contents', 'profiles.image', 'profiles.name', 'posts.user_id')->where('posts.deleted_at', null)->join('profiles', 'posts.user_id', '=', 'profiles.user_id')->get();
+								$posts = DB::table('posts')->select('posts.id as post_id', 'posts.created_at', 'posts.title', 'posts.trouble', 'posts.life', 'posts.midical', 'posts.saving', 'posts.cancer', 'posts.pension', 'posts.all_life', 'posts.insurance_value', 'posts.contents', 'profiles.image', 'profiles.name', 'posts.user_id')->where('posts.deleted_at', null)->leftjoin('profiles', 'posts.user_id', '=', 'profiles.user_id')->get();
 								return view('top.index', compact('posts', 'profile'));
 
 
@@ -95,13 +95,22 @@ class PostController extends Controller
 
 				public function detail(Request $request) {
 								$post = DB::table('posts')->select('posts.id as post_id', 'posts.created_at', 'posts.title', 'posts.trouble', 'posts.life', 'posts.midical', 'posts.saving', 'posts.cancer', 'posts.pension', 'posts.all_life', 'posts.insurance_value', 'posts.contents', 'profiles.image', 'profiles.name', 'posts.user_id')->where('posts.id', $request->input('post_id'))->join('profiles', 'posts.user_id', '=', 'profiles.user_id')->first();
-								$comments = DB::table('comments')->select('comment.id', 'comments.comment', 'comments.user_id', 'comments.created_at', 'profiles.name', 'profiles.image')->where('comments.post_id', $request->input('post_id'))->join('profiles', 'comments.user_id', '=', 'profiles.user_id')->get();
+								$comments = DB::table('comments')->select('comments.id', 'comments.comment', 'comments.user_id', 'comments.created_at', 'comments.good', 'profiles.name', 'profiles.image')->where('comments.post_id', $request->input('post_id'))->join('profiles', 'comments.user_id', '=', 'profiles.user_id')->get();
 								return view('post.detail', compact('post', 'comments'));
 				}
 				
 				public function commentDelete(Request $request) {
 								Comment::findOrFail($request->input('comment_id'))->delete();
 								session()->flash('flash_message', 'コメントを削除しました。');
+								return back();
+				}
+
+				public function commentGood(Request $request) {
+		
+								$comment = Comment::findOrFail($request->input('comment_id'));
+								$comment->good = 1;
+								$comment->save();
+								session()->flash('flash_message', 'コメントにいいねを押しました');
 								return back();
 				}
 
