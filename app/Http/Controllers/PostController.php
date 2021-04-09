@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Post;
 use DB;
 use App\Comment;
+use App\User;
 
 class PostController extends Controller
 {
 				public function index() {
-								//$posts = Post::all();
-								$profile = Profile::where('user_id', Auth::id())->first();
-								$posts = DB::table('posts')->select('posts.id as post_id', 'posts.created_at', 'posts.title', 'posts.trouble', 'posts.life', 'posts.midical', 'posts.saving', 'posts.cancer', 'posts.pension', 'posts.all_life', 'posts.insurance_value', 'posts.contents', 'profiles.image', 'profiles.name', 'posts.user_id')->where('posts.deleted_at', null)->leftjoin('profiles', 'posts.user_id', '=', 'profiles.user_id')->get();
+								$profile = User::where('id', Auth::id())->first();
+								$posts = DB::table('posts')->select('posts.id as post_id', 'posts.created_at', 'posts.title', 'posts.trouble', 'posts.life', 'posts.midical', 'posts.saving', 'posts.cancer', 'posts.pension', 'posts.all_life', 'posts.insurance_value', 'posts.contents', 'users.image', 'users.name', 'posts.user_id')->where('posts.deleted_at', null)->leftjoin('users', 'posts.user_id', '=', 'users.id')->get();
 								return view('top.index', compact('posts', 'profile'));
 
 
@@ -94,8 +94,8 @@ class PostController extends Controller
 				}
 
 				public function detail(Request $request) {
-								$post = DB::table('posts')->select('posts.id as post_id', 'posts.created_at', 'posts.title', 'posts.trouble', 'posts.life', 'posts.midical', 'posts.saving', 'posts.cancer', 'posts.pension', 'posts.all_life', 'posts.insurance_value', 'posts.contents', 'profiles.image', 'profiles.name', 'posts.user_id')->where('posts.id', $request->input('post_id'))->join('profiles', 'posts.user_id', '=', 'profiles.user_id')->first();
-								$comments = DB::table('comments')->select('comments.id', 'comments.comment', 'comments.user_id', 'comments.created_at', 'comments.good', 'profiles.name', 'profiles.image')->where('comments.post_id', $request->input('post_id'))->join('profiles', 'comments.user_id', '=', 'profiles.user_id')->get();
+								$post = DB::table('posts')->select('posts.id as post_id', 'posts.created_at', 'posts.title', 'posts.trouble', 'posts.life', 'posts.midical', 'posts.saving', 'posts.cancer', 'posts.pension', 'posts.all_life', 'posts.insurance_value', 'posts.contents', 'users.image', 'users.name', 'posts.user_id')->where('posts.id', $request->input('post_id'))->join('users', 'posts.user_id', '=', 'users.id')->first();
+								$comments = DB::table('comments')->select('comments.id', 'comments.comment', 'comments.user_id', 'comments.created_at', 'comments.good', 'users.name', 'users.image')->where('comments.post_id', $request->input('post_id'))->join('users', 'comments.user_id', '=', 'users.id')->get();
 								return view('post.detail', compact('post', 'comments'));
 				}
 				

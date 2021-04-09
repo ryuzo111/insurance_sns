@@ -5,11 +5,10 @@
 
 @if (!empty($chat_users))
 @foreach ($chat_users as $chat_user)
-@if ($chat_user->recive_user_id === Auth::id())
-<p>{{$chat_user->send_user_id}}</p>
-@else
-<p>{{$chat_user->recive_user_id}}</p>
-@endif
+<a href="{{route('chat.chat', ['user_id' => $chat_user->id])}}">
+<img style="height:100px; width:100px; border-radius:50%" src="{{asset('/storage/' . $chat_user->image)}}">
+<p>{{$chat_user->name}}</p>
+</a>
 @endforeach
 @endif
 

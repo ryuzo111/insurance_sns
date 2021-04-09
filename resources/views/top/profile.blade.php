@@ -67,12 +67,8 @@
 </a>
 @endif
 
-@if (!empty($profile['user_id']))
-@if ($profile['user_id'] === Auth::id())
+@if ($profile['id'] === Auth::id())
 <a href="{{route('profile.showEditForm')}}">プロフィールを編集する</a>
 @endif
-@else
-<a href="{{route('profile.showEditForm')}}">プロフィールを編集する</a>
 
-@endif
 @endsection
