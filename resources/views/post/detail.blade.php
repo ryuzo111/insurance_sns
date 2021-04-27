@@ -7,6 +7,7 @@
 @endif
 
 @if (!empty($post))
+<div class="post-detail-container">
 <table border="1" style="text-align:center; border-collapse:collapse;">
 <a href="{{route('profile.detail', ['user_id' => $post->user_id])}}">
 <img style="height:100px; width:100px; border-radius:50%" src="{{asset('/storage/' . $post->image)}}">
@@ -75,16 +76,17 @@
 @endif
 <a href="{{route('post.commentForm', ['post_id' => $post->post_id])}}"><i class="far fa-comment"></i></a>
 </table>
-
+</div>
 
 @else 
 <p>投稿はありません</p>
 @endif
 
 @if (!empty($comments))
+<div class="post-detail-comment">
 <h2>コメント一覧</h2>
 @foreach ($comments as $comment)
-<div style="display:flex; background:#b0c4de; width:900px; margin:0 auto;">
+<div style="display:flex; background:#b0c4de; width:900px; margin:0 auto; padding:20px; border-radius:20px;">
 <a href="{{route('profile.detail', ['user_id' => $comment->user_id])}}">
 <img style="height:100px; width:100px; border-radius:50%" src="{{asset('/storage/' . $post->image)}}">
 <p>{{$comment->name}}</p>
@@ -104,6 +106,7 @@
 @elseif ($comment->good === 1)
 <p>参考になったコメント</p>
 @endif
+</div>
 @endif
 
 

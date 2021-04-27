@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>プローフィール編集ページ</h1>
+<h1>プロフィール編集ページ</h1>
 <form action="{{route('profile.edit')}}" method="post" enctype="multipart/form-data">
 {{csrf_field()}}
 <p>プロフィール写真</p>
@@ -9,14 +9,34 @@
 
 <input type="text" name="name" placeholder="名前を入力してください(匿名をおすすめしています。)" value="{{$profile['name'] ?? null}}">
 <input type="number" name="age" value="{{$proflie['age'] ?? null}}">
+
 <p>性別
+@if (!empty($profile['sex']))
+@if ($profile['sex'] === 1)
+<input type="radio" name="sex" value=1 checked>男
+<input type="radio" name="sex" value=2>女
+@else
+<input type="radio" name="sex" value=1>男
+<input type="radio" name="sex" value=2 checked>女
+@endif
+@else
 <input type="radio" name="sex" value=1>男
 <input type="radio" name="sex" value=2>女
+@endif
 </p>
+
 <p>保険(共済)の募集人ですか？
+@if (!empty($profile['recruiter']))
+@if ($profile['recruiter'] === 1)
+<input type="radio" name="recruiter" value=1 checked>はい
+<input type="radio" name="recruiter" value=2>いいえ
+@endif
+@else
 <input type="radio" name="recruiter" value=1>はい
 <input type="radio" name="recruiter" value=2 checked>いいえ
+@endif
 </p>
+
 <p>保険(共済)の募集人の方のみお答えください</p>
 <p>所属している組織名を教えて下さい</p>
 <input type="text" name="insurance_company" value="{{$profile['insurance_company'] ?? null}}">

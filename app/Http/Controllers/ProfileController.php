@@ -7,6 +7,8 @@ use App\Profile;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use DB;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ProfileEditRequest;
 
 
 class ProfileController extends Controller
@@ -24,7 +26,7 @@ class ProfileController extends Controller
 								return view('top.profile', compact('profile'));
 
 				}
-				public function edit(Request $request) {
+				public function edit(ProfileEditRequest $request) {
 
 								$profile = User::where('id', Auth::id())->first();
 								if (!empty($profile)) {
@@ -35,13 +37,9 @@ class ProfileController extends Controller
 
 
 								if ($request->hasFile('image')) {
-												$validation_rule = [
-																'image' => ['image', 'mimes:jpeg,png', 'max:2048'],
-												];
-																$this->validate($request, $validation_rule);
 																DB::transaction(function() use($request, $profile) {
 																								if (!empty($profile['image'])) {
-																								Storage::delete('public/' . $item['image_pass']);
+																								Storage::delete('public/' . $profile['image']);
 																								}
 
 																								$file_extension = str_replace('image/', '', $request->file('image')->getMimeType());
@@ -52,6 +50,7 @@ class ProfileController extends Controller
 								}
 
 								$profile['name'] = $request->input('name');
+								$profile['sex'] = $request->input('sex');
 								$profile['age'] = $request->input('age');
 								$profile['recruiter'] = $request->input('recruiter');
 								$profile['insurance_company'] = $request->input('insurance_company');

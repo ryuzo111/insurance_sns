@@ -19,8 +19,9 @@
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'PostController@top')->name('top');
 
-Route::get('/', 'PostController@index')->name('post.index');
+Route::get('/index', 'PostController@index')->name('post.index');
 
 Route::group(['prefix' => 'profile'], function() {
 				Route::get('editForm', 'ProfileController@showEditForm')->name('profile.showEditForm');
@@ -29,7 +30,7 @@ Route::group(['prefix' => 'profile'], function() {
 				Route::get('detail/{user_id}', 'ProfileController@detail')->name('profile.detail');
 });
 
-Route::group(['prefix' => 'post', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'post', 'middleware' => 'auth:user'], function() {
 				Route::get('postForm', 'PostController@showPostForm')->name('post.showPostForm');
 				Route::post('post', 'PostController@post')->name('post.post');
 				Route::get('delete', 'PostController@delete')->name('post.delete');
@@ -38,14 +39,36 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth'], function() {
 				Route::get('detail', 'PostController@detail')->name('post.detail');
 				Route::get('comment_delete', 'PostController@commentDelete')->name('post.commentDelete');
 				Route::get('comment_good', 'PostController@commentGood')->name('post.commentGood');
+				Route::post('search', 'PostController@search')->name('post.search');
 });
 
 Route::group(['prefix' => 'rank'], function() {
 				Route::get('rank', 'RankController@rank')->name('rank.rank');
 });
 
-Route::group(['prefix' => 'caht', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'caht', 'middleware' => 'auth:user'], function() {
 				Route::get('index', 'ChatController@index')->name('chat.index');
 				Route::get('chat', 'ChatController@chat')->name('chat.chat');
 				Route::post('chatSend', 'ChatController@chatSend')->name('chat.send');
 });
+
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
+	Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
+	Route::get('home',      'Admin\HomeController@index')->name('admin.home');
+	Route::get('index', 'AdminUserController@index')->name('user.index');
+});
+
+Route::group(['prefix' => 'admin'], function() {
+	Route::get('login', 'Admin\LoginController@showLoginForm')->name('admin.login');
+	Route::post('login', 'Admin\LoginController@login');
+	Route::get('contact', 'ContactController@contactIndex')->name('contact.index');
+	Route::get('contact/status', 'ContactController@contactChange')->name('contact.change');
+	Route::get('logout', function() {
+		return abort(404);
+	});
+});
+
+Route::get('contact', 'ContactController@contactForm')->name('contact.contactForm');
+Route::post('contact', 'ContactController@contact')->name('contact.contact');
+

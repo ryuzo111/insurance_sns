@@ -8,15 +8,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Destiny 保険') }}</title>
+    <title>{{ config('app.name', '運命の保険') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+		<style>body{background-color:tomato;}</style>
 </head>
 <body>
-    <div class="main-wrapper" id="app">
+    <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -30,8 +31,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/index') }}">
-                        Destiny 保険
+                    <a class="navbar-brand" href="{{ url('/admin/index') }}">
+                        運命の保険
                     </a>
                 </div>
 
@@ -44,24 +45,21 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
+                        @if (Auth::guard('admin')->check())
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::guard('admin')->user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a href="{{ route('admin.logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
@@ -70,8 +68,10 @@
                             </li>
 																		<li><a href="{{route('profile.profile')}}">プロフィール</a></li>
 																		<li><a href="{{route('rank.rank')}}">コメントいいねランキング</a></li>
-																		<li><a href="{{route('chat.index')}}">チャット</a></li>
-                        @endguest
+																		<li><a href="{{route('contact.index')}}">問い合わせ一覧</a></li>
+                        @else
+                            <li><a href="{{ route('admin.login') }}">Login</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -79,12 +79,6 @@
 
         @yield('content')
     </div>
-
-		<footer>
-		<p class="footer-logo">Destiny 保険</p>
-		<a class="footer-btn" href="{{route('contact.contactForm')}}">お問い合わせ</a>
-		<p class="footer-copy">© 2021 Ryuzo Yajima</p>
-		</footer>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

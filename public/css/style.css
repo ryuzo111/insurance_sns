@@ -1,0 +1,318 @@
+body {
+font-family: "Arial", "メイリオ";
+}
+.main-wrapper {
+  min-height: 100vh;
+}
+h1 {
+  position: relative;
+  padding: 0.25em 0.5em;
+	width:300px;
+	text-align:center;
+	font-weight:bold;
+	background:rgba(103,197,255,1);
+	margin:20px auto;
+  border-radius: 3px 0 3px 0;
+}
+
+
+h1:after {
+  top:-12px;
+  left:-12px;
+}
+h1:before {
+  bottom:-12px;
+  right:-12px;
+}
+.post {
+				width:1000px;
+				background:rgba(103,197,255,0.3);
+				margin:0 auto 20px;
+				border-radius: 8px;
+				padding: 1em 1.5em;
+}
+
+.profile-btn {
+				position:absolute;
+
+}
+.post-container{
+				margin:0 0 0 130px;
+
+}
+.post-btns {
+				margin:0 0 0 500px;
+}
+.post-table {
+				margin : 0 0 0 100px;
+
+}
+.trouble-post-container {
+				margin-bottom:40px;
+				margin-left:220px;
+}
+.trouble-post {
+				border-radius:50px;
+				text-align:center;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+			
+}
+
+.trouble-post:hover {
+				background: #67c5ff;
+  color: white;
+
+}
+.search-container {
+				margin:0 0 40px 220px;
+}
+.search-text {
+				
+  border: solid 2px #67c5ff;
+}
+
+
+/*postのview*/
+.post-container1 {
+				margin:20px 300px;
+				font-size:18px;
+				text-align:center;
+
+}
+.post-title {
+				width:300px;
+}
+
+.post-container2 {
+				margin:20px 300px;
+				font-size:18px;
+				text-align:center;
+}
+.post-container3 {
+				margin:20px 300px;
+				font-size:18px;
+				text-align:center;
+}
+.post-text {
+				padding:20px 10px;
+				width:800px;
+				text-align:left;
+				height: calc( 1.3em * 5 );
+  line-height: 1.3;
+	  white-space: pre-wrap;
+
+}
+.post-p {
+				font-weight:bold;
+}
+.post-submit-button {
+				display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+}
+.post-submit-button:hover {
+				background: #67c5ff;
+  color: white;
+}
+
+/*chatのview*/
+.chat-room {
+				margin:0 auto;
+				width:900px;
+				font-size:18px;
+}
+.chat-send {
+	margin:0 0 20px auto ;
+  min-width: 120px;
+  max-width: 100%;
+}
+.chat-send-p {
+  padding: 7px 10px;
+  color: #555;
+  font-size: 16px;
+  background: #00FF00;
+	border-radius:30px;
+  display: inline-block;
+				
+}
+.chat-recive-user {
+				display:flex;
+}
+.chat-recieve {
+  display: inline-block;
+	margin: 0 0 20px 10px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #e0edff;
+	border-radius:30px;
+}
+.chat-form {
+				width:900px;
+				margin:0 auto;
+}
+.chat-btn {
+				display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+	margin:30px 0 0 840px;
+}
+.chat-btn:hover {
+				background: #67c5ff;
+  color: white;
+}
+
+/*chatのindexview*/
+.chat-index-user {
+				margin:20px 0;
+				text-align:center;
+}
+
+/*profileのprofileviewを編集*/
+
+.profile {
+				margin:0 auto;
+				width:500px;
+				text-align:center;
+				font-size:18px;
+				font-weight:bold;
+}
+.profile-profile-btn {
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+	margin:0 -118px;
+  transition: .4s;
+}
+.profile-profile-btn:hover {
+				background: #67c5ff;
+  color: white;
+}
+
+/*postのdetailのview*/
+
+.post-detail-container {
+				width:900px;
+				margin:30px auto 30px;
+				text-align:center;
+}
+.post-detail-comment {
+				width:900px;
+				margin:30px auto 30px;
+}
+
+/*postのcomment_postのview*/
+.comment-post-container {
+				width:900px;
+				margin:30px auto 30px;
+}
+
+/*footer*/
+footer{
+				background:black;
+				color:white;
+				padding:40px 30px;
+				bottom:0;
+				width:100%;
+}
+
+.footer-logo {
+				font-size:20px;
+}
+.footer-btn {
+				color:white;
+				text-decoration: none;
+}
+.footer-btn:hover {
+				color:orange;
+				text-decoration:none;
+}
+.footer-copy {
+				text-align:center;
+				margin-top:30px;
+}
+
+/*contactのview*/
+.contact-main {
+				width:900px;
+				margin:0 auto;
+}
+.contact-mail {
+				padding:20px 200px;
+}
+.contact-btn {
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+}
+.contact-btn:hover {
+				background: #67c5ff;
+  color: white;
+}
+
+/*topのtop*/
+.top-container {
+				height:100vh;
+				
+}
+.top-left-container {
+}
+.top-h2 {
+				margin-bottom:30px;
+				font-weight:bold;
+}
+.top-logo {
+				text-decoration:none;
+				position:relative;
+				top:20;
+				font-size:18px;
+				margin:0;
+				color:black;
+				
+				left:10px;
+}
+.top-main-container {
+				margin:193px auto;
+				width:500px;
+				text-align:center;
+}
+.top-login {
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+				display:inline-block;
+				margin:20px 0;
+}
+.top-login:hover {
+				background: #67c5ff;
+  color: white;
+}
+.top-register {
+				display:inline-block;
+}
+
+
+

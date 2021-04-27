@@ -7,6 +7,7 @@ use App\Chat;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use App\User;
+use App\Http\Requests\ChatRequest;
 
 class ChatController extends Controller
 {
@@ -25,6 +26,7 @@ class ChatController extends Controller
 				public function chat(Request $request) {
 
 								$user_id = $request->input('user_id');
+								$user = User::findOrFail($user_id);
 								$send_chat = Chat::where('send_user_id', Auth::id())->where('recive_user_id', $user_id)->get();
 								$recive_chat = Chat::where('send_user_id', $user_id)->where('recive_user_id', Auth::id())->orderBy('created_at', 'asc')->get();
 
@@ -37,11 +39,10 @@ class ChatController extends Controller
 
 								array_multisort($all, SORT_ASC, $all_messages);
 
-
-								return view('chat.chat', compact('all_messages', 'user_id'));
+								return view('chat.chat', compact('all_messages', 'user'));
 				}
 
-				public function chatSend(Request $request) {
+				public function chatSend(ChatRequest $request) {
 
 								$chat_user = User::findOrFail($request->input('user_id'));
 

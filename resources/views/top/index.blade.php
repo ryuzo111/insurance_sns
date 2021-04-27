@@ -6,28 +6,43 @@
 <div class="flash_message" style="color:red">{{ session('flash_message') }}</div>
 @endif
 
+@guest
+<p>ログインしたら投稿できるようになります。</p>
+@else
+<div class="trouble-post-container">
+<a class="trouble-post" href="{{route('post.showPostForm')}}">悩みを投稿する</a>
+</div>
+@endguest
 
-<form action="#" method="post">
+<div class="search-container">
+<form action="{{route('post.search')}}" method="post">
 {{csrf_field()}}
-<input type="text" >
-<input type="submit" value="検索する">
+<input class="search-text" name="post_name" type="text" value="{{$post_name ?? null}}" >
+<input class="trouble-post" type="submit" value="検索する">
 </form>
+</div>
 
 @if (!empty($posts))
 @foreach ($posts as $post)
-<table border="1" style="text-align:center; border-collapse:collapse;">
-<a href="{{route('profile.detail', ['user_id' => $post->user_id])}}">
+<div class="post">
+<table class="post-table"  border="1" style="text-align:center; border-collapse:collapse;">
+<a class="profile-btn" href="{{route('profile.detail', ['user_id' => $post->user_id])}}">
+@if (!empty($post->image))
 <img style="height:100px; width:100px; border-radius:50%" src="{{asset('/storage/' . $post->image)}}">
+@else
+<img style="height:100px; width:100px; border-radius:50%" src="{{asset('/storage/' . 'ae4e6be7-1140875.jpeg')}}">
+@endif
 <p>{{$post->name}}</p>
 </a>
 
+<div class="post-container">
 <p>{{$post->created_at}}</p>
 <p style="font-weight:bold; font-size:20px">{{$post->title}}</p>
 
 <tr>
 <th>悩み</th>
 <th>探している保険の種類</th>
-<th>加入している保険の詳細</th>
+<th>探している保険の詳細</th>
 <th>その他詳細</th>
 </tr>
 <tr>
@@ -78,23 +93,23 @@
 <p>{{$post->contents}}</p>
 </td>
 </tr>
+<div class="post-btns">
 @if (Auth::id() === $post->user_id)
 <a href="{{route('post.delete', ['post_id' => $post->post_id])}}">投稿を削除する<i class="fa fa-trash"></i></a>
 @endif
 <a href="{{route('post.commentForm', ['post_id' => $post->post_id])}}">コメント(提案含む)を追加する<i class="far fa-comment"></i></a>
 <a href="{{route('post.detail', ['post_id' => $post->post_id])}}">コメントを確認する</a>
+</div>
+</div>
 </table>
 
+</div>
 @endforeach
+{{$posts->links()}}
 
 @else 
 <p>投稿はありません</p>
 @endif
 
-@guest
-<p>ログインしたら投稿できるようになります。</p>
-@else
-<a href="{{route('post.showPostForm')}}">悩みを投稿する</a>
-@endguest
 
 @endsection
