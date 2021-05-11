@@ -82,7 +82,6 @@ class PostController extends Controller
                                                 'comment' => ['required', 'max:140'],
                                                 'post_id' => ['required', 'exists:posts,id'],
                                 ];
-
         $this->validate($request, $rule);
 
         $comment = new Comment();
