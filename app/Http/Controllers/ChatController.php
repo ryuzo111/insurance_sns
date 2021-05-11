@@ -24,8 +24,6 @@ class ChatController extends Controller
 						
 								$chat_users = $chat_users->whereNotIn('id', Auth::id());
 							
-							
-
 								return view('chat.index', compact('chat_users'));
 				}
 
