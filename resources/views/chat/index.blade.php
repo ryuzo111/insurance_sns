@@ -2,6 +2,9 @@
 
 @section('content')
 <h1>チャット相手の選択</h1>
+@if (session('flash_message'))
+<div class="flash_message" style="color:red">{{ session('flash_message') }}</div>
+@endif
 
 @if (!empty($chat_users))
 @foreach ($chat_users as $chat_user)

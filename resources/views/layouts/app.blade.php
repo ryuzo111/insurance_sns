@@ -15,9 +15,9 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 </head>
-<body>
+<body style="background:white">
     <div class="main-wrapper" id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav style="background:white;" class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 

@@ -19,6 +19,12 @@ class ChatController extends Controller
 
 								$chat_users = $send->merge($recive);
 								$chat_users = $chat_users->unique();
+								$auth_id = Auth::id();
+							
+						
+								$chat_users = $chat_users->whereNotIn('id', Auth::id());
+							
+							
 
 								return view('chat.index', compact('chat_users'));
 				}
@@ -29,6 +35,11 @@ class ChatController extends Controller
 								$user = User::findOrFail($user_id);
 								$send_chat = Chat::where('send_user_id', Auth::id())->where('recive_user_id', $user_id)->get();
 								$recive_chat = Chat::where('send_user_id', $user_id)->where('recive_user_id', Auth::id())->orderBy('created_at', 'asc')->get();
+
+								if ($send_chat === Auth::id() && $recive_chat === Auth::id()) {
+									session()->flash('flash_message', '自分にチャットをすることはできないです');
+									return view('chat.index', compact('chat_users'));
+								}
 
 								$all_messages = $send_chat->merge($recive_chat)->toArray();
 								$all = [];
