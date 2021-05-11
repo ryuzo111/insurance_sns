@@ -88,7 +88,7 @@
 @foreach ($comments as $comment)
 <div style="display:flex; background:#b0c4de; width:900px; margin:0 auto; padding:20px; border-radius:20px;">
 <a href="{{route('profile.detail', ['user_id' => $comment->user_id])}}">
-<img style="height:100px; width:100px; border-radius:50%" src="{{asset('/storage/' . $post->image)}}">
+<img style="height:100px; width:100px; border-radius:50%" src="{{asset('/storage/' . $comment->image)}}">
 <p>{{$comment->name}}</p>
 </a>
 <div>
@@ -99,6 +99,7 @@
 <a href="{{route('post.commentDelete', ['comment_id' => $comment->id])}}">
 <i class="fa fa-trash"></i>
 </a>
+@endif
 @if ($post->user_id === Auth::id() && $comment->good === 0)
 <a href="{{route('post.commentGood', ['comment_id' => $comment->id])}}">
 <i class="far fa-thumbs-up"></i>参考になった
@@ -107,7 +108,7 @@
 <p>参考になったコメント</p>
 @endif
 </div>
-@endif
+
 
 
 </div>

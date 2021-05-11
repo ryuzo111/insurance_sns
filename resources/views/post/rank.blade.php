@@ -8,7 +8,10 @@
 
 @if (!empty($comment_users_rank))
 @foreach ($comment_users_rank as $user)
-<div border="1" style="text-align:center; border-collapse:collapse;">
+<div class="rank-container" border="1" style="text-align:center; ">
+@if ($loop->first)
+<i style="font-size:60px;color:gold;" class="fas fa-crown"></i>
+@endif
 <a href="{{route('profile.detail', ['user_id' => $user->user_id])}}">
 <img style="height:100px; width:100px; border-radius:50%" src="{{asset('/storage/' . $user->image)}}">
 <p>{{$user->name}}</p>
