@@ -14,7 +14,7 @@ class AddGoodToCommentTable extends Migration
     public function up()
     {
         Schema::table('comments', function (Blueprint $table) {
-								$table->integer('good');
+								$table->integer('good')->default(0);
             //
         });
     }
