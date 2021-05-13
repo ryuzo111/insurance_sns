@@ -95,8 +95,9 @@ class PostController extends Controller
 
     public function commentForm(Request $request)
     {
-        $post_id = $request->input('post_id');
-        return view('post.comment_post', compact('post_id'));
+        $post = DB::table('posts')->select('posts.id as post_id', 'posts.created_at', 'posts.title', 'posts.trouble', 'posts.life', 'posts.midical', 'posts.saving', 'posts.cancer', 'posts.pension', 'posts.all_life', 'posts.insurance_value', 'posts.contents', 'users.image', 'users.name', 'posts.user_id')->where('posts.id', $request->input('post_id'))->join('users', 'posts.user_id', '=', 'users.id')->first();
+
+        return view('post.comment_post', compact('post'));
     }
 
     public function detail(PostDetailRequest $request)
