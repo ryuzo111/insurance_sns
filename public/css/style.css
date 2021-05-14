@@ -217,6 +217,19 @@ h1:before {
   color: white;
 }
 
+/* profileのeditviewを編集 */
+.profile-edit-container {
+	margin:0 auto 20px;
+				width:500px;
+				text-align:center;
+				font-size:18px;
+				font-weight:bold;
+}
+
+.profile-edit-section-container {
+	margin-top:30px;
+}
+
 /*postのdetailのview*/
 
 .post-detail-container {
@@ -325,5 +338,13 @@ footer{
 				display:inline-block;
 }
 
+.contact-main {
+	background:rgba(103,197,255,0.3);
+	margin:0 auto 20px;
+	border-radius: 8px;
+	padding: 1em 1.5em;
+	width: 600px;
+
+}
 
 
