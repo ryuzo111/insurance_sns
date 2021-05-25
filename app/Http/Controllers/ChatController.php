@@ -13,16 +13,15 @@ class ChatController extends Controller
 {
     public function index()
     {
+        $send = DB::table('chats')->select('users.name', 'users.image', 'users.id')->distinct()->where('chats.send_user_id', Auth::id())->leftjoin('users', 'chats.recive_user_id', '=', 'users.id')->get();
+        $recive = DB::table('chats')->select('users.name', 'users.image', 'users.id')->distinct()->Where('recive_user_id', Auth::id())->leftjoin('users', 'chats.send_user_id', '=', 'users.id')->get();
 
-            $send = DB::table('chats')->select('users.name', 'users.image', 'users.id')->distinct()->where('chats.send_user_id', Auth::id())->leftjoin('users', 'chats.recive_user_id', '=', 'users.id')->get();
-            $recive = DB::table('chats')->select('users.name', 'users.image', 'users.id')->distinct()->Where('recive_user_id', Auth::id())->leftjoin('users', 'chats.send_user_id', '=', 'users.id')->get();
-
-            $chat_users = $send->merge($recive);
-            $chat_users = $chat_users->unique();
-            $auth_id = Auth::id();
+        $chat_users = $send->merge($recive);
+        $chat_users = $chat_users->unique();
+        $auth_id = Auth::id();
                             
                         
-            $chat_users = $chat_users->whereNotIn('id', Auth::id());
+        $chat_users = $chat_users->whereNotIn('id', Auth::id());
 
     
         return view('chat.index', compact('chat_users'));
