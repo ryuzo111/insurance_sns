@@ -8,7 +8,7 @@
 @guest
 
 <p>メールアドレス</p>
-<input class="contact-mail" type="email" name="email" size-"200" required >
+<input class="contact-mail" type="email" name="email"  required >
 @endguest
 <p>問い合わせ内容</p>
 <textarea class="contact-content" cols="50" rows="5" typ="text" name="content">

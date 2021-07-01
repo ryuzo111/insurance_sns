@@ -66,8 +66,6 @@
 																		
                                 </ul>
                             </li>
-																		<li><a href="{{route('profile.profile')}}">プロフィール</a></li>
-																		<li><a href="{{route('rank.rank')}}">コメントいいねランキング</a></li>
 																		<li><a href="{{route('contact.index')}}">問い合わせ一覧</a></li>
                         @else
                             <li><a href="{{ route('admin.login') }}">Login</a></li>

@@ -33,10 +33,10 @@
 @endif
 
 @if (!empty($profile['family_structure']))
-<p>家族構成 : {{$profile['family_structure']}}</p>
+<p>【家族構成】 {{$profile['family_structure']}}</p>
 @endif
 
-<p>現在住んでいる家</p>
+<p>【現在住んでいる家】</p>
 @if (!empty($profile['home']))
 @if ($profile['home'] === 1)
 <p>一軒家(持ち家)</p>
@@ -57,9 +57,23 @@
 @endif
 @endif
 
-<p>現在住んでいる都道府県</p>
+<p>【現在住んでいる都道府県】</p>
 @if (!empty($profile['pref']))
 <p>{{$profile['pref']}}</p>
+@else
+<p>未登録</p>
+@endif
+
+<p>【加入している保険】</p>
+@if (!empty($profile['have_insurance']))
+<p>{{$profile['have_insurance']}}</p>
+@else
+<p>未登録</p>
+@endif
+
+<p>【フリーコメント】</p>
+@if (!empty($profile['free_comment']))
+<p>{{$profile['free_comment']}}</p>
 @else
 <p>未登録</p>
 @endif
