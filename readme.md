@@ -35,30 +35,32 @@ MAMP/php/Laravel5.5/mysql/git/vim/linux<br>
 ![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D1readme.png)
 
 悩み投稿の一覧ページ<br>
-
+![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D2readme.png)
 
 保険の投稿をクリックすると詳細画面<br>
-
+![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D3readme.png)
 
 保険の悩みを投稿するページ<br>
-
+![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D4readme.png)
 
 ## 気に入っている点
 ・フッター<br>
 黒と白を貴重にしたシンプルなデザインと人生初のcopyrightがかっこいい、、<br>
+![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D5readme.png)
 
 
 ・デフォルトのプロフィール写真<br>
 プロフィール写真を設定していないとかわいいピカチュウのシルエット写真になります。遊び心を入れました。<br>
+![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D6readme.png)
 
 ・「Destiny　保険」というサービス名<br>
 
 ・コメントにいいねをたくさんいただいたランキング<br>
 Fontawesomeでcrownのロゴを使いました！　色とロゴが合ってて抜群に好き<br>
-
+![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D7readme.png)
 
 ・チャット機能<br>
-
+![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D8readme.png)
 
 ## 反省点
 各作業にかかった時間計測していない<br>
