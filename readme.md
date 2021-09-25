@@ -51,16 +51,15 @@ MAMP/php/Laravel5.5/mysql/git/vim/linux<br>
 
 ・デフォルトのプロフィール写真<br>
 プロフィール写真を設定していないとかわいいピカチュウのシルエット写真になります。遊び心を入れました。<br>
-![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D6readme.png)
 
 ・「Destiny　保険」というサービス名<br>
 
 ・コメントにいいねをたくさんいただいたランキング<br>
 Fontawesomeでcrownのロゴを使いました！　色とロゴが合ってて抜群に好き<br>
-![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D7readme.png)
+![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D6readme.png)
 
 ・チャット機能<br>
-![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D8readme.png)
+![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D7readme.png)
 
 ## 反省点
 各作業にかかった時間計測していない<br>
