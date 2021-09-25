@@ -32,7 +32,7 @@ MAMP/php/Laravel5.5/mysql/git/vim/linux<br>
 ・対応したお問い合わせのステータスを変更機能<br>
 
 トップ画面<br>
-![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/public/default/D1readme.png)
+![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D1readme.png)
 
 悩み投稿の一覧ページ<br>
 
