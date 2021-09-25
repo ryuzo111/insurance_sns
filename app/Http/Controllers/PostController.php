@@ -11,6 +11,7 @@ use App\Comment;
 use App\User;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\PostDetailRequest;
+use App\Http\Requests\postCommentRule;
 use Illuminate\Pagination\Paginator;
 
 class PostController extends Controller
@@ -41,9 +42,10 @@ class PostController extends Controller
     }
     public function delete(Request $request)
     {
-        $post = Post::findOrFail($request->input('post_id'));
-        if ($post->user_id === Auth::id()) {
-            Post::findOrFail($request->input('post_id'))->delete();
+        $result = $this->post->deletePost($request);
+
+        dd($result);
+        if ($result === true) {
             session()->flash('flash_message', '投稿を削除しました。');
         } else {
             session()->flash('flash_message', '不正ログインです。');
@@ -51,14 +53,8 @@ class PostController extends Controller
         return redirect()->route('post.index');
     }
 
-    public function postComment(Request $request)
+    public function postComment(postCommentRule $request)
     {
-        $rule = [
-                                                'comment' => ['required', 'max:140'],
-                                                'post_id' => ['required', 'exists:posts,id'],
-                                ];
-        $this->validate($request, $rule);
-
         $comment = new Comment();
         $comment->user_id = Auth::id();
         $comment->post_id = $request->input('post_id');
@@ -79,7 +75,6 @@ class PostController extends Controller
     {
         $post = DB::table('posts')->select('posts.id as post_id', 'posts.created_at', 'posts.title', 'posts.trouble', 'posts.life', 'posts.midical', 'posts.saving', 'posts.cancer', 'posts.pension', 'posts.all_life', 'posts.insurance_value', 'posts.contents', 'users.image', 'users.name', 'posts.user_id')->where('posts.id', $request->input('post_id'))->join('users', 'posts.user_id', '=', 'users.id')->first();
         $comments = DB::table('comments')->select('comments.id', 'comments.comment', 'comments.user_id', 'comments.created_at', 'comments.good', 'users.name', 'users.image')->where('comments.post_id', $request->input('post_id'))->join('users', 'comments.user_id', '=', 'users.id')->get();
-        // dd($comments);
         
         return view('post.detail', compact('post', 'comments'));
     }

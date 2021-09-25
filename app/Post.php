@@ -48,4 +48,15 @@ class Post extends Model
         $post['contents'] = $request->input('contents');
         $post->save();
     }
+
+    public function deletePost($request)
+    {
+        $post = $this->findOrFail($request->input('post_id'));
+        if ($post->user_id === Auth::id()) {
+            $this->findOrFail($request->input('post_id'))->delete();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
