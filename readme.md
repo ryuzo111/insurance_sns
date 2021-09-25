@@ -1,58 +1,84 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Destiny 保険
+保険が大好きで優柔不断な日本人に後悔のない保険選びをサポートすることを目的に作成いたしました。<br>
+Destiny保険とは、保険の悩みを共有するSNSです。<br>
+会員登録したユーザーは保険に対して抱えている悩みを投稿することができます。他のユーザーからコメントでアドバイスを受けることができます。<br>
+プロフィール欄も充実しているためユーザーが保険のプロなのか？同じような悩みをかける主婦なのか？すぐに分かる事ができます。<br>
+気になったユーザーがいた場合はチャット機能で２人だけの会話を頼むことができます。より深い内容の提案を受けることを期待できます。<br>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## 使用技術
+MAMP/php/Laravel5.5/mysql/git/vim/linux<br>
 
-## About Laravel
+## 機能
+### 全ユーザー
+・投稿を見ることができる<br>
+・コメントに「いいね」評価をいただけた数ランキングを見ることができる<br>
+・管理者にお問い合わせをすることができる<br>
+・悩み投稿を検索することができる。<br>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+### 会員登録したユーザーのみ
+・保険に対する悩みを投稿することができる<br>
+・ユーザーの投稿にコメント(アドバイス)をすることができる。<br>
+・他のユーザーとチャットすることができる<br>
+・投稿についたコメントを確認することができる<br>
+・プロフィール機能<br>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 投稿したユーザーのみ
+・投稿を削除することができる<br>
+・投稿のコメントに「いいね」をすることができる<br>
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+### 管理者のみ
+・全ユーザー確認機能<br>
+・全お問い合わせ確認機能<br>
+・対応したお問い合わせのステータスを変更機能<br>
 
-## Learning Laravel
+トップ画面<br>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+悩み投稿の一覧ページ<br>
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+保険の投稿をクリックすると詳細画面<br>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
 
-## Contributing
+保険の悩みを投稿するページ<br>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Security Vulnerabilities
+## 気に入っている点
+・フッター<br>
+黒と白を貴重にしたシンプルなデザインと人生初のcopyrightがかっこいい、、<br>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+・デフォルトのプロフィール写真<br>
+プロフィール写真を設定していないとかわいいピカチュウのシルエット写真になります。遊び心を入れました。<br>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+・「Destiny　保険」というサービス名<br>
+
+・コメントにいいねをたくさんいただいたランキング<br>
+Fontawesomeでcrownのロゴを使いました！　色とロゴが合ってて抜群に好き<br>
+
+
+・チャット機能<br>
+
+
+## 反省点
+各作業にかかった時間計測していない<br>
+fatコントローラー<br>
+cssがきたない<br>
+
+## サービスに導入したいこと
+提案書作成機能<br>
+レスポンシブ対応<br>
+非同期通信<br>
+リファクタリング<br>
+
+## 学んだ点
+サーバーに公開する流れ<br>
+①ssh接続時　<br>
+公開鍵の権限を600に変更すること<br>
+サーバーIDはメールで送られてくるIDとは違うこと(エックスサーバーと契約すると様々なIDがあるため勘違いしてログインに失敗しました)<br>
+[ssh接続時に参考にした記事](https://qiita.com/ryo2132/items/38b5a93b3df476dd2b44)<br>
+
+②サーバー公開後にローカルからimageデータをリモートサーバーに移す時<br>
+FTPのログインするときに設定を何度も間違えたせいで、ログインできなくなりました。<br>
+[xserver公式のFTPに関するQ&A](https://www.xserver.ne.jp/manual/man_server_ssh.php)<br>
+そのため、VSCodeでRemote sshで接続して、ローカルにあるimageフォルダーをドラッグアンドドロップで移動させました。<br>
