@@ -52,9 +52,6 @@ WEBサイトURL:　https://xs970147.xsrv.jp/ <br>
 ![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D5readme.png)
 
 
-・デフォルトのプロフィール写真<br>
-プロフィール写真を設定していないとかわいいピカチュウのシルエット写真になります。遊び心を入れました。<br>
-
 ・「Destiny　保険」というサービス名<br>
 
 ・コメントにいいねをたくさんいただいたランキング<br>
