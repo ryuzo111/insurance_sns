@@ -83,3 +83,5 @@ cssがきたない<br>
 FTPのログインするときに設定を何度も間違えたせいで、ログインできなくなりました。<br>
 [xserver公式のFTPに関するQ&A](https://www.xserver.ne.jp/manual/man_server_ssh.php)<br>
 そのため、VSCodeでRemote sshで接続して、ローカルにあるimageフォルダーをドラッグアンドドロップで移動させました。<br>
+
+皆様のご参考になれば幸いです。
