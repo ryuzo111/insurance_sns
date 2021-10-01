@@ -34,6 +34,7 @@ WEBサイトURL:　https://xs970147.xsrv.jp/ <br>
 ・全お問い合わせ確認機能<br>
 ・対応したお問い合わせのステータスを変更機能<br>
 
+
 トップ画面<br>
 ![!](https://github.com/ryuzo111/insurance_sns/blob/master/storage/app/default/D1readme.png)
 
