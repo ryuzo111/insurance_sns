@@ -10,7 +10,7 @@ MAMP/php/Laravel5.5/mysql/git/vim/linux<br>
 
 ## URL
 WEBサイトURL:　https://xs970147.xsrv.jp/ <br>
-解説記事URL:　https://qiita.com/yagiryu/items/312b1310298afc8e4cd6
+解説記事URL:　https://qiita.com/yagiryu/items/312b1310298afc8e4cd6 </br>
 ## 機能
 ### 全ユーザー
 ・投稿を見ることができる<br>
